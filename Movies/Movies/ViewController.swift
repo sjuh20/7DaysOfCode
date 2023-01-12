@@ -8,6 +8,9 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    var networking = Networking()
+    var movies = [Movie]()
 
         private lazy var titleLabel: UILabel = {
         let title = UILabel()
@@ -33,6 +36,18 @@ class ViewController: UIViewController {
         view.gradientView()
         addConstraints()
         configTableView()
+        configureApi()
+        
+    }
+    
+    func configureApi() {
+        self.networking.fetchMovies { [weak self] movies in
+            self?.movies = movies
+            
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
+        }
         
     }
     
@@ -76,9 +91,6 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
         return UITableViewCell()
         
     }
-    
-    
-    
     
 }
 

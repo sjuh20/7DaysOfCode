@@ -28,6 +28,14 @@ class MovieTableViewCell: UITableViewCell {
         return label
     }()
     
+    private lazy var titleVoteAverage: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .white.withAlphaComponent(0.75)
+        label.font = UIFont.systemFont(ofSize: 14)
+        return label
+    }()
+    
     private lazy var imagePoster: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -68,8 +76,9 @@ class MovieTableViewCell: UITableViewCell {
     
     func configureData(movie: Movie) {
         titleLabel.text = movie.title
-        titleReleaseDate.text = "Lançamento: \(movie.releaseDate)"
-        imagePoster.image = UIImage(named: movie.image ?? "")
+        titleReleaseDate.text = "Lançamento: \(movie.release_date)"
+        imagePoster.image = UIImage(named: movie.poster_path ?? "")
+        titleVoteAverage.text = "\(movie.vote_average)"
     }
     
     private func setLayout() {
@@ -82,6 +91,7 @@ class MovieTableViewCell: UITableViewCell {
         self.mainStackView.addArrangedSubview(stackViewLabels)
         self.stackViewLabels.addArrangedSubview(titleLabel)
         self.stackViewLabels.addArrangedSubview(titleReleaseDate)
+        self.stackViewLabels.addArrangedSubview(titleVoteAverage)
        
         
         
