@@ -8,34 +8,8 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
-    let movies: [Movie] = [
-        Movie(id: 1, title: "Órfã 2: A Origem", overview: "2022-07-27", release_date: nil, image: "", vote_average: 7.2),
-        Movie(id: 2, title: "Minions 2: A Origem de Gru", overview: "2022-06-29", release_date: nil, image: "", vote_average: 7.8),
-        Movie(id: 3, title: "Thor: Amor e Trovão", overview: "2022-07-06", release_date: nil, image: "", vote_average: 6.8),
-        Movie(id: 4, title: "Avatar", overview: "2009-12-18", release_date: nil, image: nil, vote_average: 8.8),
-    ]
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = UIColor(named: "Gradient1")
-        addConstraints()
-        configTableView()
-        gradientView()
-    }
-    
-    func gradientView() {
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = self.view.bounds
-        gradientLayer.colors = [UIColor(named: "Gradient1")?.cgColor, UIColor(named: "Gradient2")?.cgColor]
-            view.layer.addSublayer(gradientLayer)
-        
-        let backgroundView = UIView(frame: tableView.bounds)
-        backgroundView.layer.addSublayer(gradientLayer)
-        tableView.backgroundView = backgroundView
-    }
-    
-        lazy var titleLabel: UILabel = {
+        private lazy var titleLabel: UILabel = {
         let title = UILabel()
         title.translatesAutoresizingMaskIntoConstraints = false
         title.text = "Filmes Populares"
@@ -45,19 +19,29 @@ class ViewController: UIViewController {
     }()
     
         private lazy var tableView: UITableView = {
-        let tableView = UITableView()
+        let tableView = UITableView(frame: .zero, style: .plain)
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(MovieTableViewCell.self, forCellReuseIdentifier: MovieTableViewCell.identifier)
         tableView.backgroundColor = .clear
+        tableView.separatorStyle = .none
         return tableView
         }()
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.gradientView()
+        addConstraints()
+        configTableView()
+        
+    }
     
     func configTableView() {
         tableView.delegate = self
         tableView.dataSource = self
     }
     
-    func addConstraints() {
+    private func addConstraints() {
         view.addSubview(titleLabel)
         view.addSubview(tableView)
         
@@ -82,19 +66,18 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        let movies = movies[indexPath.row]
-        
-        cell.textLabel?.text = movies.title
-        cell.textLabel?.textColor = .white
-        cell.backgroundColor = .clear
-        cell.selectionStyle = .none
-        
-        
-        return cell
+        if let cell = tableView.dequeueReusableCell(withIdentifier: MovieTableViewCell.identifier, for: indexPath) as? MovieTableViewCell {
+            cell.selectionStyle = .none
+            cell.configureData(movie: movies[indexPath.row])
+                return cell
+        }
+       
+        return UITableViewCell()
         
     }
+    
+    
     
     
 }
