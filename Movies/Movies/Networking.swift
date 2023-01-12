@@ -12,10 +12,7 @@ class Networking : UIImageView {
     
     
     func fetchMovies(completionHandle: @escaping ([Movie]) -> Void) {
-        
-        
-        
-        guard let url = URL(string: "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=3775a9ddfcccf51c01dc3b8e109ecb21") else {return}
+        guard let url = URL(string: "https://api.themoviedb.org/3/movie/popular?api_key=8eb6c777ec4afbd830c7340eca705fd1&language=pt-BR&page=1") else {return}
         
         let task = URLSession.shared.dataTask(with: url, completionHandler: {(data, response, error) in
             
@@ -33,12 +30,11 @@ class Networking : UIImageView {
                let movieSummary = try? JSONDecoder().decode(MovieResults.self, from: data) {
                 completionHandle(movieSummary.results )
             }
-            
-            
-            
         })
         task.resume()
         
         
     }
+    
+    
 }
