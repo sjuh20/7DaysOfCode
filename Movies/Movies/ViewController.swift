@@ -35,10 +35,10 @@ class ViewController: UIViewController {
         view.gradientView()
         addConstraints()
         configTableView()
-        configureApi()
+        getPopularMovies()
     }
     
-    func configureApi() {
+    func getPopularMovies() {
         self.networking.fetchMovies { [weak self] movies in
             self?.movies = movies
             
@@ -83,6 +83,12 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
             return cell
         }
         return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let detailsVC = MovieDetailsViewController(movie: movies[indexPath.row])
+        navigationController?.pushViewController(detailsVC, animated: true)
     }
     
 }

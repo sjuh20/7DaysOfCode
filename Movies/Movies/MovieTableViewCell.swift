@@ -63,7 +63,7 @@ class MovieTableViewCell: UITableViewCell {
         return stack
     }()
     
-    
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         addConstraints()
@@ -74,16 +74,6 @@ class MovieTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setImage(from url: String, imageView: UIImageView) {
-        guard let imageURL = URL(string: "https://image.tmdb.org/t/p/w500\(url)") else {return}
-        DispatchQueue.global().async {
-            guard let imageData = try? Data(contentsOf: imageURL) else {return}
-            let image = UIImage(data: imageData)
-            DispatchQueue.main.async {
-                imageView.image = image
-            }
-        }
-    }
     
     func configureData(movie: Movie) {
         titleLabel.text = movie.title
@@ -93,8 +83,8 @@ class MovieTableViewCell: UITableViewCell {
     }
     
     private func setLayout() {
-        backgroundColor = .clear
-    }
+            backgroundColor = .clear
+        }
     
     private func addConstraints() {
         self.addSubview(mainStackView)
@@ -103,9 +93,8 @@ class MovieTableViewCell: UITableViewCell {
         self.stackViewLabels.addArrangedSubview(titleLabel)
         self.stackViewLabels.addArrangedSubview(titleReleaseDate)
         self.stackViewLabels.addArrangedSubview(titleVoteAverage)
-        
-        
-        
+       
+    
         NSLayoutConstraint.activate([
             
             mainStackView.topAnchor.constraint(equalTo: topAnchor, constant: 16.0),
@@ -119,4 +108,18 @@ class MovieTableViewCell: UITableViewCell {
         ])
     }
     
+}
+
+extension MovieTableViewCell {
+    
+    func setImage(from url: String, imageView: UIImageView) {
+        guard let imageURL = URL(string: "https://image.tmdb.org/t/p/w500\(url)") else {return}
+        DispatchQueue.global().async {
+            guard let imageData = try? Data(contentsOf: imageURL) else {return}
+            let image = UIImage(data: imageData)
+            DispatchQueue.main.async {
+                imageView.image = image
+            }
+        }
+    }
 }

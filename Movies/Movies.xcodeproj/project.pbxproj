@@ -14,6 +14,7 @@
 		704A3798296C445900B5C612 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 704A3796296C445900B5C612 /* LaunchScreen.storyboard */; };
 		704A37A2296C5E2200B5C612 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704A37A1296C5E2200B5C612 /* Movie.swift */; };
 		70B2191E29704A310034EA1E /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B2191D29704A310034EA1E /* Networking.swift */; };
+		70B21922297094210034EA1E /* MovieDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B21921297094210034EA1E /* MovieDetailsViewController.swift */; };
 		70D103A2296DD23E00A5575E /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D103A1296DD23E00A5575E /* MovieTableViewCell.swift */; };
 		70D103A5296DD39F00A5575E /* UIView+swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D103A4296DD39F00A5575E /* UIView+swift.swift */; };
 /* End PBXBuildFile section */
@@ -28,6 +29,7 @@
 		704A3799296C445900B5C612 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		704A37A1296C5E2200B5C612 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		70B2191D29704A310034EA1E /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		70B21921297094210034EA1E /* MovieDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewController.swift; sourceTree = "<group>"; };
 		70D103A1296DD23E00A5575E /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
 		70D103A4296DD39F00A5575E /* UIView+swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+swift.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -72,6 +74,7 @@
 				704A37A1296C5E2200B5C612 /* Movie.swift */,
 				70D103A1296DD23E00A5575E /* MovieTableViewCell.swift */,
 				70B2191D29704A310034EA1E /* Networking.swift */,
+				70B21921297094210034EA1E /* MovieDetailsViewController.swift */,
 			);
 			path = Movies;
 			sourceTree = "<group>";
@@ -156,6 +159,7 @@
 			files = (
 				70D103A2296DD23E00A5575E /* MovieTableViewCell.swift in Sources */,
 				70D103A5296DD39F00A5575E /* UIView+swift.swift in Sources */,
+				70B21922297094210034EA1E /* MovieDetailsViewController.swift in Sources */,
 				704A37A2296C5E2200B5C612 /* Movie.swift in Sources */,
 				704A3790296C445800B5C612 /* ViewController.swift in Sources */,
 				704A378C296C445800B5C612 /* AppDelegate.swift in Sources */,
