@@ -72,8 +72,8 @@ class MovieDetailsViewController: UIViewController {
         NSLayoutConstraint.activate([
             
             titleDetailLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 32.0),
-            titleDetailLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            titleDetailLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            titleDetailLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor,constant: -10),
+            titleDetailLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor,constant: 10),
             
             imagePoster.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             imagePoster.widthAnchor.constraint(equalToConstant: 192.0),
